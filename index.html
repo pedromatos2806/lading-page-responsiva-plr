@@ -1169,7 +1169,7 @@
 
       <div class="timer price-box__timer" data-js="timer-block">
         <div class="timer__unit">
-          <span class="timer__num" data-js="timer-hours">03</span>
+          <span class="timer__num" data-js="timer-hours">00</span>
           <span class="timer__label">Horas</span>
         </div>
         <div class="timer__unit">
@@ -1440,16 +1440,18 @@
         }
 
         /* --------------------------------------------------
-     1. COUNTDOWN TIMER — 10m cycle, auto-resets
+     1. COUNTDOWN TIMER — starts 11:47, loops back at 7:00
      -------------------------------------------------- */
-        const CYCLE_MS = 10 * 60 * 1000;
+        const START_S = 11 * 60 + 57; // 11:57
+        const FLOOR_S = 7 * 60; // 7:00
+        const CYCLE_S = START_S - FLOOR_S;
+        const CYCLE_MS = CYCLE_S * 1000;
 
         (function initTimer() {
-          function getNextReset() {
-            return Math.ceil(Date.now() / CYCLE_MS) * CYCLE_MS;
-          }
           function tick() {
-            const { h, m, s } = formatRemaining(getNextReset() - Date.now());
+            const elapsed = Date.now() % CYCLE_MS;
+            const remainingS = START_S - Math.floor(elapsed / 1000);
+            const { h, m, s } = formatRemaining(remainingS * 1000);
 
             const hoursEl = document.querySelector('[data-js="timer-hours"]');
             const minsEl = document.querySelector('[data-js="timer-minutes"]');
