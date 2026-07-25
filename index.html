@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Método P24 — Fature seu primeiro dinheiro online em 24h</title>
+    <title>Método P+100 — Fature seu primeiro dinheiro online em 24h</title>
     <meta
       name="description"
       content="+100 PLRs prontos para você começar no mercado digital do absoluto zero. Garantia de primeira venda em 24h ou R$100 no seu Pix."
     />
     <meta
       property="og:title"
-      content="Método P24 — Fature seu primeiro dinheiro online em 24h"
+      content="Método P+100 — Fature seu primeiro dinheiro online em 24h"
     />
     <meta
       property="og:description"
       content="+100 PLRs prontos para você começar no mercado digital sem criar nada, sem gastar com anúncios. Garantia real."
     />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://metodop24.com" />
+
     <meta name="robots" content="index, follow" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +42,7 @@
         --radius-sm: 8px;
         --radius: 12px;
         --radius-lg: 20px;
-        --section-py: 72px;
+        --section-py: 48px;
         --section-py-sm: 56px;
       }
       @media (max-width: 640px) {
@@ -96,6 +96,9 @@
         background: var(--bg-1);
       }
       .section--flush-top {
+        padding-top: 0;
+      }
+      .section + .section {
         padding-top: 0;
       }
       .section__title {
@@ -658,16 +661,22 @@
       .guarantee {
         text-align: center;
       }
-      .guarantee__seal {
-        width: 80px;
-        height: 80px;
-        background: transparent;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .guarantee__seal-crop {
+        width: 580px;
+        max-width: 100%;
+        aspect-ratio: 580 / 340;
+        overflow: hidden;
         margin: 0 auto 20px;
-        font-size: 36px;
+        position: relative;
+      }
+      .guarantee__seal {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+        display: block;
+        position: absolute;
+        top: -35.3%;
+        left: 0;
       }
       .guarantee__accent {
         background: var(--gradient);
@@ -1059,7 +1068,9 @@
         <div class="benefits-grid">
           <div class="card">
             <div class="card__icon card__icon--center">&#128218;</div>
-            <h3 class="card__title">+100 produtos prontos</h3>
+            <h3 class="card__title">
+              +100 produtos prontos para você começar a vender ainda hoje
+            </h3>
             <p class="card__text">
               E-books, cursos, templates e infoprodutos completos com licença de
               revenda
@@ -1237,25 +1248,15 @@
     <section class="section section--dark reveal">
       <div class="wrap">
         <div class="guarantee">
-          <div class="guarantee__seal">&#128737;</div>
-          <h2 class="section__title">
-            Eu confio tanto no Método que eu faço
-            <span class="guarantee__accent">um acordo com você</span>
-          </h2>
-          <ul class="guarantee__list">
-            <li>
-              Se você <strong>não fizer sua primeira venda em 24h</strong>, você
-              pode pedir o estorno. Devolvo 100% dos seus R$27,90.
-            </li>
-            <li>
-              <strong>E mais:</strong> além do estorno, você pode solicitar
-              <strong>R$100 direto no seu Pix</strong> — porque eu sei que você
-              vai conseguir.
-            </li>
-          </ul>
-          <p class="guarantee__payoff">
-            Ou seja: na pior das hipóteses, você sai no lucro.
-          </p>
+          <div class="guarantee__seal-crop">
+            <img
+              class="guarantee__seal"
+              src="img/seguranca.png"
+              alt="Selo de garantia de segurança"
+              loading="lazy"
+            />
+          </div>
+
           <div class="payment-badges">
             <span class="payment-badge">&#128179; Pix aprovado na hora</span>
             <span class="payment-badge">&#128179; Cartão de crédito</span>
@@ -1315,7 +1316,7 @@
                 <span class="faq-item__arrow">&#9660;</span>
               </button>
               <div class="faq-item__answer">
-                Não. O Método P24 foi feito para iniciantes absolutos. Os PLRs
+                Não. O Método P+100 foi feito para iniciantes absolutos. Os PLRs
                 já vêm prontos — você só precisa copiar e divulgar. O passo a
                 passo completo está incluído.
               </div>
@@ -1333,22 +1334,6 @@
               <div class="faq-item__answer">
                 Você pode estar vendendo em menos de 30 minutos. O acesso é
                 imediato após a confirmação do pagamento.
-              </div>
-            </div>
-            <div class="faq-item">
-              <button
-                class="faq-item__question"
-                data-js="faq-toggle"
-                type="button"
-                aria-expanded="false"
-              >
-                <span>Como funciona a garantia de R$100?</span>
-                <span class="faq-item__arrow">&#9660;</span>
-              </button>
-              <div class="faq-item__answer">
-                Se você aplicar o método e não fizer sua primeira venda em até
-                24h, devolvemos 100% do seu dinheiro + R$100 de multa no seu
-                Pix. É o nosso jeito de mostrar que o método funciona.
               </div>
             </div>
             <div class="faq-item">
@@ -1414,7 +1399,7 @@
         <a href="#">Políticas de Privacidade</a> |
         <a href="#">Termos de Uso</a> | <a href="#">Suporte</a>
         <p class="site-footer__copy">
-          &copy; 2025 Método P24 — Todos os direitos reservados
+          &copy; 2025 Método P+100 — Todos os direitos reservados
         </p>
       </div>
     </footer>
@@ -1429,7 +1414,7 @@
           </div>
           <div class="sticky-cta__timer">
             &#9200; Oferta encerra em
-            <span data-js="timer-sticky">03:00:00</span>
+            <span data-js="timer-sticky">00:10</span>
           </div>
         </div>
         <button class="sticky-cta__btn" data-js="cta">
@@ -1455,9 +1440,9 @@
         }
 
         /* --------------------------------------------------
-     1. COUNTDOWN TIMER — 3h cycle, auto-resets
+     1. COUNTDOWN TIMER — 10m cycle, auto-resets
      -------------------------------------------------- */
-        const CYCLE_MS = 3 * 60 * 60 * 1000;
+        const CYCLE_MS = 10 * 60 * 1000;
 
         (function initTimer() {
           function getNextReset() {
