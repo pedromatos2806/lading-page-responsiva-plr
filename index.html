@@ -219,8 +219,7 @@
 
       /* --- 4.4 Urgency bar --- */
       .urgency-bar {
-        background: var(--blue);
-        color: #04101f;
+        background: var(--gradient);
         text-align: center;
         padding: 10px 16px;
         font-size: 14px;
@@ -228,6 +227,20 @@
         letter-spacing: 0.3px;
         position: relative;
         z-index: 20;
+      }
+      .urgency-bar__text {
+        color: #ffffff;
+        display: inline-block;
+        animation: urgency-shake 1.2s ease-in-out infinite;
+      }
+      @keyframes urgency-shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(8px);
+        }
       }
       .urgency-bar__timer {
         display: inline-block;
@@ -253,6 +266,8 @@
       }
       .hero__bullets-wrap {
         position: relative;
+        max-width: 640px;
+        margin: 0 auto;
       }
       .hero__image {
         position: absolute;
@@ -295,6 +310,13 @@
         background: var(--bg-1);
         padding-left: 24px;
         padding-right: 24px;
+      }
+      .hero__img-celular {
+        width: min(180%, 620px);
+        max-width: none;
+        display: block;
+        margin: 0 auto;
+        border-radius: 16px;
       }
       .hero--row .hero__images-row {
         display: flex;
@@ -376,7 +398,7 @@
       }
       @media (max-width: 420px) {
         .hero--row .hero__img-celular {
-          width: min(180%, 620px);
+          width: min(220%, 700px);
         }
       }
 
@@ -400,6 +422,12 @@
         position: relative;
         text-align: left;
       }
+      @media (max-width: 768px) {
+        .hero__title {
+          text-align: center;
+          margin-bottom: 16px;
+        }
+      }
       .hero__highlight {
         background: var(--gradient);
         -webkit-background-clip: text;
@@ -407,17 +435,13 @@
         background-clip: text;
       }
       .hero__subtitle {
-        margin-top: 16px;
         color: var(--muted-2);
         font-size: clamp(16px, 2.5vw, 19px);
         max-width: 640px;
         margin-left: auto;
         margin-right: auto;
       }
-      .hero__bullets-wrap {
-        max-width: 600px;
-        margin: 28px auto 0;
-      }
+
       .hero__bullets {
         list-style: none;
         text-align: left;
@@ -707,6 +731,11 @@
         font-size: 32px;
         border: none;
       }
+      .authority__avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       .authority__name {
         font-size: 20px;
         color: var(--blue-light);
@@ -739,10 +768,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
         padding: 18px 20px;
         cursor: pointer;
         font-size: 15px;
         font-weight: 600;
+        font-family: inherit;
+        color: inherit;
+        background: none;
+        border: none;
+        text-align: left;
         -webkit-user-select: none;
         user-select: none;
         gap: 12px;
@@ -935,8 +970,10 @@
   <body>
     <!-- URGENCY BAR -->
     <div class="urgency-bar">
-      &#9202; Oferta relâmpago — renovada a cada 3h
-      <span class="urgency-bar__timer" data-js="timer-urgency"></span>
+      <span class="urgency-bar__text">
+        &#9202; Oferta relâmpago
+        <span class="urgency-bar__timer" data-js="timer-urgency"></span>
+      </span>
     </div>
 
     <!-- HERO -->
@@ -945,18 +982,30 @@
         <div class="wrap">
           <div class="hero__badge">&#9733; Acesso imediato</div>
           <h1 class="hero__title">
-            <span class="hero__highlight">+100 PLRs</span> prontos para usar
-            (ebooks, cursos, templates)
+            <span class="hero__highlight"> + DE 100 PRODUTOS </span>para deixar
+            de ser afiliado
           </h1>
+          <p class="hero__subtitle">
+            Comece a vender <strong>hoje</strong> como produtor.
+          </p>
+          <p class="hero__subtitle">
+            Te entrego +100 produtos para você vender e
+            <strong>lucrar 100%</strong> em cima disso!
+          </p>
           <div class="hero__images-row">
-            <img class="hero__img-celular" src="img/photoshop-cel.png" alt="Minha foto com algumas das vendas" />
+            <img
+              class="hero__img-celular"
+              src="img/photoshop-cel.png"
+              alt="Minha foto com algumas das vendas"
+            />
           </div>
-      </div>
-          
+
           <div class="hero__bullets-wrap">
             <ul class="hero__bullets">
               <li>
-                <strong>Mais de 100 PLRs organizados em um único Drive.</strong>
+                <strong
+                  >Mais de 100 produtos organizados em um único Drive.</strong
+                >
               </li>
               <li>
                 <strong>Produtos de diversos nichos com alta demanda.</strong>
@@ -988,14 +1037,14 @@
     <!-- BENEFITS -->
     <section class="section reveal" id="benefits">
       <div class="wrap">
-        <h2 class="section__title section__title--mb">O que você leva</h2>
+        <h2 class="section__title section__title--mb">O que você leva?</h2>
         <p class="section__subtitle">
           Tudo pronto para você começar a vender hoje mesmo
         </p>
         <div class="benefits-grid">
           <div class="card">
             <div class="card__icon card__icon--center">&#128218;</div>
-            <h3 class="card__title">+100 PLRs prontos</h3>
+            <h3 class="card__title">+100 produtos prontos</h3>
             <p class="card__text">
               E-books, cursos, templates e infoprodutos completos com licença de
               revenda
@@ -1031,7 +1080,6 @@
 
     <!-- NOVA SECTION (imagens + conteudo) -->
     <section class="hero hero--row">
-
       <div class="hero__inner">
         <div class="wrap">
           <h1 class="hero__title">
@@ -1080,10 +1128,10 @@
     <section class="proof-counter proof-counter--dark reveal">
       <div class="wrap">
         <div class="proof-counter__number" data-js="counter" data-target="2347">
-          2.347
+          + 2.347
         </div>
         <p class="proof-counter__text">
-          alunos já estão faturando com o Método P24
+          Pessoas já estão faturando como produtoras
         </p>
       </div>
     </section>
@@ -1091,7 +1139,7 @@
     <div class="price-box">
       <span class="price-box__tag">&#9200; Oferta por tempo limitado</span>
       <div class="price-box__old">De R$97,00</div>
-      <div class="price-box__price">R$19,90 <small>à vista</small></div>
+      <div class="price-box__price">R$27,90 <small>à vista</small></div>
 
       <div class="timer price-box__timer" data-js="timer-block">
         <div class="timer__unit">
@@ -1109,7 +1157,7 @@
       </div>
 
       <button class="cta" data-js="cta">
-        Quero ganhar dinheiro agora investindo apenas <strong>R$19,90</strong>
+        Quero ganhar dinheiro agora investindo apenas <strong>R$27,90</strong>
         <span class="cta__micro">Acesso vitalício + atualizações grátis</span>
       </button>
       <p class="price-box__guarantee">
@@ -1182,7 +1230,7 @@
           <ul class="guarantee__list">
             <li>
               Se você <strong>não fizer sua primeira venda em 24h</strong>, você
-              pode pedir o estorno. Devolvo 100% dos seus R$19,90.
+              pode pedir o estorno. Devolvo 100% dos seus R$27,90.
             </li>
             <li>
               <strong>E mais:</strong> além do estorno, você pode solicitar
@@ -1200,8 +1248,10 @@
             <span class="payment-badge">&#128260; Suporte VIP</span>
           </div>
           <button class="cta cta--centered cta--mt" data-js="cta">
-            Quero garantir meu acesso — R$19,90
-            <span class="cta__micro">Invista um valor irrisório e comece a ganhar dinheiro agora</span> 
+            Quero garantir meu acesso — R$27,90
+            <span class="cta__micro"
+              >Invista um valor irrisório e comece a ganhar dinheiro agora</span
+            >
           </button>
         </div>
       </div>
@@ -1211,22 +1261,22 @@
     <section class="section reveal">
       <div class="wrap">
         <div class="authority__card">
-          <div class="authority__avatar">FR</div>
+          <div class="authority__avatar">
+            <img src="img/perfil.jpeg" alt="Foto de perfil" />
+          </div>
           <div>
             <h3 class="authority__name">
-              Felipe Reboredo já fez mais de 15 mil vendas e faturou mais de
-              R$700 mil com digital
+              Eu já fiz mais de 15 mil vendas e faturei mais de
+              <strong>R$700 mil</strong> com produtos low ticket no digital.
             </h3>
             <p class="authority__text">
-              Ele já viveu na prática o que é vender todos os dias no mercado
-              digital — do zero até faturar alto. Ou seja: o Felipe não é só
-              alguém que ensina — ele vive o mercado digital por dentro,
-              todos os dias.
+              Eu já vivi na prática o que é vender todos os dias no mercado
+              digital sem ser famoso e sem precisar mostrar o meu rosto.
             </p>
             <p class="authority__text">
-              Foi com esse conhecimento que ele montou um drive completo com
-              +100 PLRs prontos pra vender — pra você pular a parte difícil e
-              ir direto pra oportunidade.
+              Foi com esse conhecimento que eu montei um drive completo com +100
+              produtos prontos pra vender — pra você pular a parte difícil e ir
+              direto pra o dinheiro no bolso.
             </p>
           </div>
         </div>
@@ -1240,15 +1290,15 @@
           <h2 class="section__title faq__title">Perguntas frequentes</h2>
           <div class="faq-list">
             <div class="faq-item">
-              <div
+              <button
                 class="faq-item__question"
                 data-js="faq-toggle"
-                role="button"
-                tabindex="0"
+                type="button"
+                aria-expanded="false"
               >
                 <span>Preciso ter experiência no mercado digital?</span>
                 <span class="faq-item__arrow">&#9660;</span>
-              </div>
+              </button>
               <div class="faq-item__answer">
                 Não. O Método P24 foi feito para iniciantes absolutos. Os PLRs
                 já vêm prontos — você só precisa copiar e divulgar. O passo a
@@ -1256,30 +1306,30 @@
               </div>
             </div>
             <div class="faq-item">
-              <div
+              <button
                 class="faq-item__question"
                 data-js="faq-toggle"
-                role="button"
-                tabindex="0"
+                type="button"
+                aria-expanded="false"
               >
                 <span>Quanto tempo leva para começar?</span>
                 <span class="faq-item__arrow">&#9660;</span>
-              </div>
+              </button>
               <div class="faq-item__answer">
                 Você pode estar vendendo em menos de 30 minutos. O acesso é
                 imediato após a confirmação do pagamento.
               </div>
             </div>
             <div class="faq-item">
-              <div
+              <button
                 class="faq-item__question"
                 data-js="faq-toggle"
-                role="button"
-                tabindex="0"
+                type="button"
+                aria-expanded="false"
               >
                 <span>Como funciona a garantia de R$100?</span>
                 <span class="faq-item__arrow">&#9660;</span>
-              </div>
+              </button>
               <div class="faq-item__answer">
                 Se você aplicar o método e não fizer sua primeira venda em até
                 24h, devolvemos 100% do seu dinheiro + R$100 de multa no seu
@@ -1287,45 +1337,45 @@
               </div>
             </div>
             <div class="faq-item">
-              <div
+              <button
                 class="faq-item__question"
                 data-js="faq-toggle"
-                role="button"
-                tabindex="0"
+                type="button"
+                aria-expanded="false"
               >
                 <span>Como recebo os produtos?</span>
                 <span class="faq-item__arrow">&#9660;</span>
-              </div>
+              </button>
               <div class="faq-item__answer">
                 Imediatamente após a confirmação do pagamento, você recebe um
                 link com acesso a todos os +100 PLRs e o passo a passo completo.
               </div>
             </div>
             <div class="faq-item">
-              <div
+              <button
                 class="faq-item__question"
                 data-js="faq-toggle"
-                role="button"
-                tabindex="0"
+                type="button"
+                aria-expanded="false"
               >
                 <span>Posso revender os PLRs?</span>
                 <span class="faq-item__arrow">&#9660;</span>
-              </div>
+              </button>
               <div class="faq-item__answer">
                 Sim! Você recebe licença de revenda para todos os produtos. Pode
                 vender e ficar com 100% do lucro.
               </div>
             </div>
             <div class="faq-item">
-              <div
+              <button
                 class="faq-item__question"
                 data-js="faq-toggle"
-                role="button"
-                tabindex="0"
+                type="button"
+                aria-expanded="false"
               >
                 <span>Quais formas de pagamento?</span>
                 <span class="faq-item__arrow">&#9660;</span>
-              </div>
+              </button>
               <div class="faq-item__answer">
                 Pix (aprovado na hora) e cartão de crédito (parcelado em até
                 12x). Compra 100% segura.
@@ -1334,7 +1384,7 @@
           </div>
 
           <button class="cta cta--centered cta--mt" data-js="cta">
-            Quero lucrar agora — R$19,90
+            Quero lucrar agora — R$27,90
             <span class="cta__micro"
               >Acesso vitalício + garantia de primeira venda em 24h</span
             >
@@ -1360,7 +1410,7 @@
         <div class="sticky-cta__info">
           <div class="sticky-cta__price">
             <span class="sticky-cta__price-old">R$97,00</span>
-            R$19,90
+            R$27,90
           </div>
           <div class="sticky-cta__timer">
             &#9200; Oferta encerra em
@@ -1462,10 +1512,17 @@
             q.addEventListener("click", function () {
               const item = this.closest(".faq-item");
               const wasOpen = item.classList.contains("is-open");
-              document
-                .querySelectorAll(".faq-item.is-open")
-                .forEach((i) => i.classList.remove("is-open"));
-              if (!wasOpen) item.classList.add("is-open");
+              document.querySelectorAll(".faq-item.is-open").forEach((i) => {
+                i.classList.remove("is-open");
+                i.querySelector('[data-js="faq-toggle"]').setAttribute(
+                  "aria-expanded",
+                  "false",
+                );
+              });
+              if (!wasOpen) {
+                item.classList.add("is-open");
+                this.setAttribute("aria-expanded", "true");
+              }
             });
           });
         })();
