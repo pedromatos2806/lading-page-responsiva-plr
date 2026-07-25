@@ -131,14 +131,14 @@
         transform: translateY(-4px);
       }
       .card__icon {
-        width: 52px;
-        height: 52px;
+        width: 72px;
+        height: 72px;
         background: transparent;
         border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 24px;
+        font-size: 40px;
       }
       .card__icon--center {
         margin: 0 auto 16px;
@@ -357,7 +357,7 @@
           align-items: center;
         }
         .hero--row .hero__img-celular {
-          width: min(95%, 480px);
+          width: min(150%, 620px);
           height: auto;
         }
         .hero--row .hero__img-comprovantes {
@@ -365,6 +365,18 @@
         }
         .hero--row .hero__inner {
           text-align: center;
+        }
+        .hero--row .hero__title {
+          text-align: center;
+        }
+        .hero--row .hero__bullets li:nth-child(3) {
+          padding-left: 30px;
+          padding-right: 20px;
+        }
+      }
+      @media (max-width: 420px) {
+        .hero--row .hero__img-celular {
+          width: min(180%, 620px);
         }
       }
 
@@ -463,6 +475,7 @@
         font-size: 16px;
         color: var(--muted);
         text-decoration: line-through;
+        text-decoration-color: #ff3b3b;
         margin-bottom: 4px;
       }
       .price-box__price {
@@ -540,10 +553,17 @@
         gap: 20px;
       }
       .testimonial {
-        background: var(--bg-1);
-        border: none;
+        background: var(--bg-2);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: var(--radius);
         padding: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      }
+      .testimonial__stars {
+        color: #ffc94a;
+        font-size: 14px;
+        letter-spacing: 2px;
+        margin-top: 6px;
       }
       .testimonial__quote {
         font-size: 14px;
@@ -551,10 +571,23 @@
         margin-bottom: 16px;
         line-height: 1.7;
         font-style: italic;
+        position: relative;
+      }
+      .testimonial__quote::before {
+        content: "\201C";
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 800;
+        color: var(--blue);
+        opacity: 0.35;
+        line-height: 0;
+        display: block;
+        margin-bottom: 8px;
       }
       .testimonial__author {
         display: flex;
         align-items: center;
+        justify-content: flex-end;
         gap: 12px;
       }
       .testimonial__avatar {
@@ -665,7 +698,7 @@
         width: 96px;
         height: 96px;
         border-radius: 50%;
-        background: var(--bg-1);
+        background: var(--bg-2);
         flex-shrink: 0;
         overflow: hidden;
         display: flex;
@@ -738,10 +771,13 @@
         font-size: 14px;
         color: var(--muted-2);
         line-height: 1.7;
+        font-style: italic;
+        text-align: left;
       }
       .is-open .faq-item__answer {
         max-height: 300px;
-        padding: 0 20px 18px;
+        padding: 14px 20px 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
       }
 
       /* --- 4.13 Footer --- */
@@ -795,6 +831,14 @@
       .sticky-cta__price {
         font-weight: 800;
         font-size: 16px;
+      }
+      .sticky-cta__price-old {
+        display: block;
+        font-weight: 400;
+        font-size: 12px;
+        color: var(--muted);
+        text-decoration: line-through;
+        text-decoration-color: #ff3b3b;
       }
       .sticky-cta__timer {
         font-size: 12px;
@@ -885,12 +929,16 @@
     <section class="hero">
       <div class="hero__inner">
         <div class="wrap">
-          <div class="hero__badge">&#9733; Novo — Acesso imediato</div>
+          <div class="hero__badge">&#9733; Acesso imediato</div>
           <h1 class="hero__title">
             <span class="hero__highlight">+100 PLRs</span> prontos para usar
             (ebooks, cursos, templates)
           </h1>
-
+          <div class="hero__images-row">
+            <img class="hero__img-celular" src="img/photoshop-cel.png" alt="Minha foto com algumas das vendas" />
+          </div>
+      </div>
+          
           <div class="hero__bullets-wrap">
             <ul class="hero__bullets">
               <li>
@@ -969,12 +1017,9 @@
 
     <!-- NOVA SECTION (imagens + conteudo) -->
     <section class="hero hero--row">
-      <div class="hero__images-row">
-        <img class="hero__img-celular" src="img/photoshop-cel.png" alt="" />
-      </div>
+
       <div class="hero__inner">
         <div class="wrap">
-          <div class="hero__badge">&#9733; Novo — Acesso imediato</div>
           <h1 class="hero__title">
             Para quem é esse<span class="hero__highlight"> produto</span>?
           </h1>
@@ -1050,7 +1095,7 @@
       </div>
 
       <button class="cta" data-js="cta">
-        Quero faturar agora — R$19,90
+        Quero ganhar dinheiro agora investindo apenas <strong>R$19,90</strong>
         <span class="cta__micro">Acesso vitalício + atualizações grátis</span>
       </button>
       <p class="price-box__guarantee">
@@ -1074,13 +1119,14 @@
               <div>
                 <div class="testimonial__name">Lucas Mendes</div>
                 <div class="testimonial__result">Primeira venda em 3h</div>
+                <div class="testimonial__stars">★★★★★</div>
               </div>
             </div>
           </div>
           <div class="testimonial">
             <div class="testimonial__quote">
               "Já tinha tentado ser afiliado mas não ia pra frente. Com os PLRs
-              prontos eu só copiei, colei e vendi. Faturei R$380 na primeira
+              prontos eu só copiei, colei e vendi. Faturei R$ 380,00 na primeira
               semana."
             </div>
             <div class="testimonial__author">
@@ -1088,6 +1134,7 @@
               <div>
                 <div class="testimonial__name">Juliana Farias</div>
                 <div class="testimonial__result">R$380 na 1ª semana</div>
+                <div class="testimonial__stars">★★★★★</div>
               </div>
             </div>
           </div>
@@ -1101,6 +1148,7 @@
               <div>
                 <div class="testimonial__name">Rafael Prado</div>
                 <div class="testimonial__result">Aprovou a qualidade</div>
+                <div class="testimonial__stars">★★★★★</div>
               </div>
             </div>
           </div>
@@ -1139,9 +1187,7 @@
           </div>
           <button class="cta cta--centered cta--mt" data-js="cta">
             Quero garantir meu acesso — R$19,90
-            <span class="cta__micro"
-              >Garantia de primeira venda em 24h ou R$100 no seu Pix</span
-            >
+            <span class="cta__micro">Invista um valor irrisório e comece a ganhar dinheiro agora</span> 
           </button>
         </div>
       </div>
@@ -1151,19 +1197,22 @@
     <section class="section reveal">
       <div class="wrap">
         <div class="authority__card">
-          <div class="authority__avatar">CM</div>
+          <div class="authority__avatar">FR</div>
           <div>
             <h3 class="authority__name">
-              Caio Martins já faturou mais de R$15 milhões
+              Felipe Reboredo já fez mais de 15 mil vendas e faturou mais de
+              R$700 mil com digital
             </h3>
             <p class="authority__text">
-              Ele é CEO e fundador da Cakto, uma das maiores plataformas de
-              pagamentos do Brasil. Ou seja: o Caio não é só alguém que ensina —
-              ele vive o mercado digital por dentro, todos os dias.
+              Ele já viveu na prática o que é vender todos os dias no mercado
+              digital — do zero até faturar alto. Ou seja: o Felipe não é só
+              alguém que ensina — ele vive o mercado digital por dentro,
+              todos os dias.
             </p>
             <p class="authority__text">
-              É exatamente esse conhecimento que ele colocou dentro do Método
-              P24, pra você não precisar descobrir nada sozinho.
+              Foi com esse conhecimento que ele montou um drive completo com
+              +100 PLRs prontos pra vender — pra você pular a parte difícil e
+              ir direto pra oportunidade.
             </p>
           </div>
         </div>
@@ -1271,7 +1320,7 @@
           </div>
 
           <button class="cta cta--centered cta--mt" data-js="cta">
-            Quero começar agora — R$19,90
+            Quero lucrar agora — R$19,90
             <span class="cta__micro"
               >Acesso vitalício + garantia de primeira venda em 24h</span
             >
@@ -1295,14 +1344,17 @@
     <div class="sticky-cta" data-js="sticky-cta">
       <div class="sticky-cta__inner">
         <div class="sticky-cta__info">
-          <div class="sticky-cta__price">R$19,90</div>
+          <div class="sticky-cta__price">
+            <span class="sticky-cta__price-old">R$97,00</span>
+            R$19,90
+          </div>
           <div class="sticky-cta__timer">
             &#9200; Oferta encerra em
             <span data-js="timer-sticky">03:00:00</span>
           </div>
         </div>
         <button class="sticky-cta__btn" data-js="cta">
-          Quero começar agora
+          Quero lucrar agora
         </button>
       </div>
     </div>
