@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Método P24 — Fature seu primeiro dinheiro online em 24h</title>
+    <meta
+      name="description"
+      content="+100 PLRs prontos para você começar no mercado digital do absoluto zero. Garantia de primeira venda em 24h ou R$100 no seu Pix."
+    />
+    <meta
+      property="og:title"
+      content="Método P24 — Fature seu primeiro dinheiro online em 24h"
+    />
+    <meta
+      property="og:description"
+      content="+100 PLRs prontos para você começar no mercado digital sem criar nada, sem gastar com anúncios. Garantia real."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metodop24.com" />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ====================================================
+   1. DESIGN TOKENS
+   ==================================================== */
+      :root {
+        --bg-1: #000000;
+        --bg-2: #071323;
+        --bg-3: #101010;
+        --bg-4: #161616;
+        --blue: #2d7df7;
+        --blue-light: #d6e8ff;
+        --gradient: linear-gradient(90deg, #aed3ff 0%, #127dff 100%);
+        --muted: #848484;
+        --muted-2: #bdbdbd;
+        --radius-sm: 8px;
+        --radius: 12px;
+        --radius-lg: 20px;
+        --section-py: 72px;
+        --section-py-sm: 56px;
+      }
+      @media (max-width: 640px) {
+        :root {
+          --section-py: 48px;
+          --section-py-sm: 40px;
+        }
+      }
+
+      /* ====================================================
+   2. RESET & BASE
+   ==================================================== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        overflow-x: hidden; /* ponytail: safety net against stray overflow, root fix is in .hero--row */
+      }
+      body {
+        font-family: Sora, sans-serif;
+        background: var(--bg-1);
+        color: #fff;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ====================================================
+   3. LAYOUT
+   ==================================================== */
+      .wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .section {
+        padding: var(--section-py) 0;
+      }
+      .section--dark {
+        background: var(--bg-1);
+      }
+      .section--flush-top {
+        padding-top: 0;
+      }
+      .section__title {
+        text-align: center;
+        font-size: clamp(22px, 4vw, 32px);
+        font-weight: 700;
+      }
+      .section__title--mb {
+        margin-bottom: 8px;
+      }
+      .section__subtitle {
+        text-align: center;
+        color: var(--muted-2);
+        font-size: 16px;
+        margin-bottom: 40px;
+      }
+
+      /* ====================================================
+   4. COMPONENTS
+   ==================================================== */
+
+      /* --- 4.1 Card --- */
+      .card {
+        background: var(--bg-1);
+        border: 1px solid var(--blue-light);
+        border-radius: var(--radius);
+        padding: 28px 24px;
+        transition:
+          border-color 0.3s,
+          transform 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+      }
+      .card__icon {
+        width: 52px;
+        height: 52px;
+        background: transparent;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+      }
+      .card__icon--center {
+        margin: 0 auto 16px;
+      }
+      .card__title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .card__text {
+        font-size: 14px;
+        color: var(--muted-2);
+      }
+
+      /* --- 4.2 CTA --- */
+      .cta {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        border: none;
+        border-radius: var(--radius);
+        background: var(--gradient);
+        color: #04101f;
+        font-size: clamp(16px, 2.5vw, 18px);
+        font-weight: 800;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        position: relative;
+      }
+      .cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(45, 125, 247, 0.35);
+      }
+      .cta:active {
+        transform: translateY(0);
+      }
+      .cta--centered {
+        max-width: 440px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .cta--mt {
+        margin-top: 32px;
+      }
+      .cta__micro {
+        display: block;
+        font-size: 12px;
+        font-weight: 400;
+        opacity: 0.75;
+        margin-top: 2px;
+      }
+
+      /* --- 4.3 Timer --- */
+      .timer {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
+      .timer__unit {
+        text-align: center;
+      }
+      .timer__num {
+        display: block;
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--blue-light);
+        min-width: 48px;
+      }
+      .timer__label {
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* --- 4.4 Urgency bar --- */
+      .urgency-bar {
+        background: var(--blue);
+        color: #04101f;
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        position: relative;
+        z-index: 20;
+      }
+      .urgency-bar__timer {
+        display: inline-block;
+        margin-left: 6px;
+      }
+
+      /* --- 4.5 Hero --- */
+      .hero {
+        background: var(--bg-1);
+        padding: 48px 0 56px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: none;
+        pointer-events: none;
+      }
+      .hero__bullets-wrap {
+        position: relative;
+      }
+      .hero__image {
+        position: absolute;
+        right: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 16px;
+        width: clamp(160px, 20vw, 260px);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero__image img {
+        width: 100%;
+        height: auto;
+        display: block;
+        opacity: 0.55;
+      }
+      @media (max-width: 900px) {
+        /* ponytail: no room beside the bullets below this breakpoint, drop it into normal flow below them instead */
+        .hero__image {
+          position: static;
+          transform: none;
+          margin: 20px auto 0;
+          width: clamp(240px, 180vw, 420px);
+          max-width: 100%;
+        }
+      }
+      .hero__inner {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+      }
+
+      .hero--row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(16px, 4vw, 48px);
+        flex-wrap: wrap;
+        background: var(--bg-1);
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+      .hero--row .hero__images-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        flex-wrap: wrap;
+        max-width: 100%;
+      }
+      .hero--row .hero__img-celular {
+        width: clamp(220px, 42vw, 600px);
+        max-width: 100%;
+        display: block;
+        border-radius: 16px;
+        -webkit-mask-image: radial-gradient(
+          ellipse 75% 75% at 50% 50%,
+          black 50%,
+          transparent 100%
+        );
+        mask-image: radial-gradient(
+          ellipse 75% 75% at 50% 50%,
+          black 50%,
+          transparent 100%
+        );
+      }
+      .hero--row .hero__img-comprovantes {
+        width: clamp(160px, 30vw, 480px);
+        max-width: 100%;
+        border-radius: 16px;
+        -webkit-mask-image: radial-gradient(
+          ellipse 75% 75% at 50% 50%,
+          black 50%,
+          transparent 100%
+        );
+        mask-image: radial-gradient(
+          ellipse 75% 75% at 50% 50%,
+          black 50%,
+          transparent 100%
+        );
+      }
+      .hero--row .hero__inner {
+        flex: 1;
+        min-width: 300px;
+        max-width: 560px;
+        text-align: left;
+      }
+      .hero--row .hero__inner .wrap {
+        margin: 0;
+        padding: 0;
+      }
+
+      @media (max-width: 768px) {
+        .hero--row {
+          flex-direction: column;
+          text-align: center;
+          gap: 32px;
+        }
+        .hero--row .hero__images-row {
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero--row .hero__img-celular {
+          width: min(95%, 480px);
+          height: auto;
+        }
+        .hero--row .hero__img-comprovantes {
+          width: min(70%, 400px);
+        }
+        .hero--row .hero__inner {
+          text-align: center;
+        }
+      }
+
+      .hero__badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #062856;
+        color: var(--blue-light);
+        font-size: 13px;
+        font-weight: 600;
+        padding: 6px 16px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+        border: none;
+      }
+      .hero__title {
+        font-size: clamp(28px, 5vw, 44px);
+        font-weight: 800;
+        line-height: 1.2;
+        position: relative;
+        text-align: left;
+      }
+      .hero__highlight {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero__subtitle {
+        margin-top: 16px;
+        color: var(--muted-2);
+        font-size: clamp(16px, 2.5vw, 19px);
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero__bullets-wrap {
+        max-width: 600px;
+        margin: 28px auto 0;
+      }
+      .hero__bullets {
+        list-style: none;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .hero__bullets li {
+        color: var(--muted-2);
+        font-size: 15px;
+        padding-left: 30px;
+        position: relative;
+      }
+      .hero__bullets li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        width: 20px;
+        height: 20px;
+        background: var(--blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #fff;
+        font-weight: 700;
+        line-height: 20px;
+      }
+
+      /* --- 4.6 Price box --- */
+      .price-box {
+        background: var(--bg-3);
+        border-radius: var(--radius-lg);
+        padding: 36px 28px;
+        margin: 32px auto 0;
+        max-width: 440px;
+        position: relative;
+        text-align: center;
+      }
+      .price-box__tag {
+        display: inline-block;
+        background: var(--gradient);
+        color: #04101f;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 16px;
+        border-radius: 999px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .price-box__old {
+        font-size: 16px;
+        color: var(--muted);
+        text-decoration: line-through;
+        margin-bottom: 4px;
+      }
+      .price-box__price {
+        font-size: clamp(38px, 6vw, 48px);
+        font-weight: 800;
+        line-height: 1;
+      }
+      .price-box__price small {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--muted);
+      }
+      .price-box__timer {
+        margin: 20px 0 0;
+      }
+      .price-box__guarantee {
+        margin-top: 16px;
+        font-size: 13px;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      /* --- 4.7 Benefits grid --- */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      /* --- 4.8 Proof counter --- */
+      .proof-counter {
+        text-align: center;
+      }
+      .proof-counter--dark {
+        background: var(--bg-1);
+        padding: 56px 0;
+      }
+      .proof-counter--inline {
+        background: transparent;
+        padding: 24px 0 0;
+        margin-top: 0;
+      }
+      .proof-counter__number {
+        font-size: clamp(40px, 7vw, 64px);
+        font-weight: 800;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+      }
+      .proof-counter__text {
+        color: var(--muted-2);
+        font-size: 16px;
+        margin-top: 8px;
+      }
+      .proof-counter__text--small {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .proof-counter__stars {
+        margin-top: 12px;
+        font-size: 24px;
+        color: #f5b342;
+        letter-spacing: 4px;
+      }
+
+      /* --- 4.9 Testimonials --- */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+      }
+      .testimonial {
+        background: var(--bg-1);
+        border: none;
+        border-radius: var(--radius);
+        padding: 24px;
+      }
+      .testimonial__quote {
+        font-size: 14px;
+        color: var(--muted-2);
+        margin-bottom: 16px;
+        line-height: 1.7;
+        font-style: italic;
+      }
+      .testimonial__author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .testimonial__avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: var(--bg-1);
+        flex-shrink: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--blue);
+      }
+      .testimonial__name {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .testimonial__result {
+        font-size: 12px;
+        color: var(--blue-light);
+        font-weight: 600;
+      }
+      .testimonials__title {
+        margin-bottom: 40px;
+      }
+
+      /* --- 4.10 Guarantee --- */
+      .guarantee {
+        text-align: center;
+      }
+      .guarantee__seal {
+        width: 80px;
+        height: 80px;
+        background: transparent;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 36px;
+      }
+      .guarantee__accent {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .guarantee__list {
+        list-style: none;
+        text-align: left;
+        max-width: 520px;
+        margin: 24px auto 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .guarantee__list li {
+        color: var(--muted-2);
+        padding-left: 28px;
+        position: relative;
+        font-size: 15px;
+      }
+      .guarantee__list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--blue);
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .guarantee__payoff {
+        margin-top: 28px;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      /* Payment badges */
+      .payment-badges {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 28px;
+        flex-wrap: wrap;
+      }
+      .payment-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--bg-1);
+        border: none;
+        padding: 8px 16px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        color: var(--muted-2);
+      }
+
+      /* --- 4.11 Authority --- */
+      .authority__card {
+        display: flex;
+        gap: 24px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .authority__avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: var(--bg-1);
+        flex-shrink: 0;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        border: none;
+      }
+      .authority__name {
+        font-size: 20px;
+        color: var(--blue-light);
+      }
+      .authority__text {
+        color: var(--muted-2);
+        margin-top: 8px;
+        font-size: 15px;
+      }
+
+      /* --- 4.12 FAQ --- */
+      .faq__title {
+        margin-bottom: 40px;
+      }
+      .faq-list {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .faq-item {
+        background: var(--bg-2);
+        border: none;
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: border-color 0.3s;
+      }
+      .faq-item__question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        -webkit-user-select: none;
+        user-select: none;
+        gap: 12px;
+      }
+      .faq-item__arrow {
+        flex-shrink: 0;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .is-open .faq-item__arrow {
+        transform: rotate(180deg);
+      }
+      .faq-item__answer {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.35s ease,
+          padding 0.35s ease;
+        padding: 0 20px;
+        font-size: 14px;
+        color: var(--muted-2);
+        line-height: 1.7;
+      }
+      .is-open .faq-item__answer {
+        max-height: 300px;
+        padding: 0 20px 18px;
+      }
+
+      /* --- 4.13 Footer --- */
+      .site-footer {
+        padding: 40px 0;
+        text-align: center;
+        font-size: 13px;
+        color: var(--muted);
+        border-top: none;
+      }
+      .site-footer a {
+        color: var(--muted);
+        text-decoration: underline;
+        margin: 0 8px;
+      }
+      .site-footer a:hover {
+        color: var(--blue-light);
+      }
+      .site-footer__copy {
+        margin-top: 8px;
+      }
+
+      /* --- 4.14 Sticky CTA --- */
+      .sticky-cta {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 12px 16px;
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+        background: var(--bg-1);
+        border-top: none;
+        transform: translateY(100%);
+        transition: transform 0.35s ease;
+        z-index: 100;
+      }
+      .sticky-cta.is-visible {
+        transform: translateY(0);
+      }
+      .sticky-cta__inner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .sticky-cta__info {
+        flex: 1;
+        min-width: 0;
+      }
+      .sticky-cta__price {
+        font-weight: 800;
+        font-size: 16px;
+      }
+      .sticky-cta__timer {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .sticky-cta__btn {
+        flex-shrink: 0;
+        padding: 14px 24px;
+        border: none;
+        border-radius: 10px;
+        background: var(--gradient);
+        color: #04101f;
+        font-weight: 800;
+        font-size: 15px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .sticky-cta__btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(45, 125, 247, 0.3);
+      }
+
+      /* --- 4.15 Scroll reveal --- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(32px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ====================================================
+   5. RESPONSIVE
+   ==================================================== */
+      @media (max-width: 640px) {
+        .hero {
+          padding: 36px 0 44px;
+        }
+        .hero__badge {
+          font-size: 12px;
+        }
+        .price-box {
+          padding: 28px 20px;
+        }
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+        .authority__card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .authority__avatar {
+          width: 80px;
+          height: 80px;
+        }
+        .sticky-cta__inner {
+          flex-direction: column;
+          gap: 8px;
+        }
+        .sticky-cta__btn {
+          width: 100%;
+        }
+        .sticky-cta__info {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+      &#9202; Oferta relâmpago — renovada a cada 3h
+      <span class="urgency-bar__timer" data-js="timer-urgency"></span>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="wrap">
+          <div class="hero__badge">&#9733; Novo — Acesso imediato</div>
+          <h1 class="hero__title">
+            <span class="hero__highlight">+100 PLRs</span> prontos para usar
+            (ebooks, cursos, templates)
+          </h1>
+
+          <div class="hero__bullets-wrap">
+            <ul class="hero__bullets">
+              <li>
+                <strong>Mais de 100 PLRs organizados em um único Drive.</strong>
+              </li>
+              <li>
+                <strong>Produtos de diversos nichos com alta demanda.</strong>
+              </li>
+              <li>
+                <strong>Acesso imediato após a confirmação da compra.</strong>
+              </li>
+              <li>
+                <strong>Arquivos prontos para edição e personalização.</strong>
+              </li>
+              <li>
+                <strong
+                  >Economize centenas de horas de criação de conteúdo.</strong
+                >
+              </li>
+              <li><strong>Deixe de ser afiliado e vire produtor.</strong></li>
+            </ul>
+            <div class="hero__image">
+              <img
+                src="img/celular-faturamento.png"
+                alt="Celular com faturamento"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="section reveal" id="benefits">
+      <div class="wrap">
+        <h2 class="section__title section__title--mb">O que você leva</h2>
+        <p class="section__subtitle">
+          Tudo pronto para você começar a vender hoje mesmo
+        </p>
+        <div class="benefits-grid">
+          <div class="card">
+            <div class="card__icon card__icon--center">&#128218;</div>
+            <h3 class="card__title">+100 PLRs prontos</h3>
+            <p class="card__text">
+              E-books, cursos, templates e infoprodutos completos com licença de
+              revenda
+            </p>
+          </div>
+          <div class="card">
+            <div class="card__icon card__icon--center">&#128179;</div>
+            <h3 class="card__title">100% dos lucros</h3>
+            <p class="card__text">
+              Você define o preço e fica com tudo. Sem split, sem comissão, sem
+              taxa escondida
+            </p>
+          </div>
+          <div class="card">
+            <div class="card__icon card__icon--center">&#128640;</div>
+            <h3 class="card__title">Comece em minutos</h3>
+            <p class="card__text">
+              Não precisa criar nada. Baixe, customize seu nome e coloque à
+              venda no mesmo dia
+            </p>
+          </div>
+          <div class="card">
+            <div class="card__icon card__icon--center">&#128222;</div>
+            <h3 class="card__title">Suporte vitalício</h3>
+            <p class="card__text">
+              Tire dúvidas no grupo exclusivo de alunos e receba atualizações
+              dos produtos
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOVA SECTION (imagens + conteudo) -->
+    <section class="hero hero--row">
+      <div class="hero__images-row">
+        <img class="hero__img-celular" src="img/photoshop-cel.png" alt="" />
+      </div>
+      <div class="hero__inner">
+        <div class="wrap">
+          <div class="hero__badge">&#9733; Novo — Acesso imediato</div>
+          <h1 class="hero__title">
+            Para quem é esse<span class="hero__highlight"> produto</span>?
+          </h1>
+          <ul class="hero__bullets">
+            <li>
+              <strong>Pessoas que desejam começar no mercado digital.</strong>
+            </li>
+            <li><strong>Afiliados que querem se tornar produtores.</strong></li>
+            <li>
+              <strong
+                >Quem deseja vender produtos digitais com sua própria
+                marca.</strong
+              >
+            </li>
+            <li>
+              <strong>Empreendedores que querem ampliar seu portfólio.</strong>
+            </li>
+            <li>
+              <strong
+                >Economize centenas de horas de criação de conteúdo.</strong
+              >
+            </li>
+            <li>
+              <strong
+                >Criadores de conteúdo que precisam de materiais para editar e
+                adaptar.</strong
+              >
+            </li>
+          </ul>
+
+          <div class="proof-counter proof-counter--inline">
+            <div class="proof-counter__stars">
+              &#9733;&#9733;&#9733;&#9733;&#9733;
+            </div>
+            <p class="proof-counter__text--small">
+              +2.347 alunos &middot; Nota 4.9 nas avaliações
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF COUNTER -->
+    <section class="proof-counter proof-counter--dark reveal">
+      <div class="wrap">
+        <div class="proof-counter__number" data-js="counter" data-target="2347">
+          2.347
+        </div>
+        <p class="proof-counter__text">
+          alunos já estão faturando com o Método P24
+        </p>
+      </div>
+    </section>
+    <!-- Box de Preço-->
+    <div class="price-box">
+      <span class="price-box__tag">&#9200; Oferta por tempo limitado</span>
+      <div class="price-box__old">De R$97,00</div>
+      <div class="price-box__price">R$19,90 <small>à vista</small></div>
+
+      <div class="timer price-box__timer" data-js="timer-block">
+        <div class="timer__unit">
+          <span class="timer__num" data-js="timer-hours">03</span>
+          <span class="timer__label">Horas</span>
+        </div>
+        <div class="timer__unit">
+          <span class="timer__num" data-js="timer-minutes">00</span>
+          <span class="timer__label">Min</span>
+        </div>
+        <div class="timer__unit">
+          <span class="timer__num" data-js="timer-seconds">00</span>
+          <span class="timer__label">Seg</span>
+        </div>
+      </div>
+
+      <button class="cta" data-js="cta">
+        Quero faturar agora — R$19,90
+        <span class="cta__micro">Acesso vitalício + atualizações grátis</span>
+      </button>
+      <p class="price-box__guarantee">
+        &#128737; Compra 100% segura &middot; Pagamento via Pix ou Cartão
+      </p>
+    </div>
+    <!-- TESTIMONIALS -->
+    <section class="section reveal">
+      <div class="wrap">
+        <h2 class="section__title testimonials__title">
+          O que quem comprou está dizendo
+        </h2>
+        <div class="testimonials-grid">
+          <div class="testimonial">
+            <div class="testimonial__quote">
+              "Comprei ontem, coloquei à venda hoje de manhã e já fiz minha
+              primeira venda em 3 horas. Loucura demais, funcionou de verdade."
+            </div>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">LM</div>
+              <div>
+                <div class="testimonial__name">Lucas Mendes</div>
+                <div class="testimonial__result">Primeira venda em 3h</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__quote">
+              "Já tinha tentado ser afiliado mas não ia pra frente. Com os PLRs
+              prontos eu só copiei, colei e vendi. Faturei R$380 na primeira
+              semana."
+            </div>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">JF</div>
+              <div>
+                <div class="testimonial__name">Juliana Farias</div>
+                <div class="testimonial__result">R$380 na 1ª semana</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="testimonial__quote">
+              "O que mais me surpreendeu foi a qualidade dos materiais. Parece
+              que foi feito por uma agência. Valeu cada centavo."
+            </div>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">RP</div>
+              <div>
+                <div class="testimonial__name">Rafael Prado</div>
+                <div class="testimonial__result">Aprovou a qualidade</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARANTEE -->
+    <section class="section section--dark reveal">
+      <div class="wrap">
+        <div class="guarantee">
+          <div class="guarantee__seal">&#128737;</div>
+          <h2 class="section__title">
+            Eu confio tanto no Método que eu faço
+            <span class="guarantee__accent">um acordo com você</span>
+          </h2>
+          <ul class="guarantee__list">
+            <li>
+              Se você <strong>não fizer sua primeira venda em 24h</strong>, você
+              pode pedir o estorno. Devolvo 100% dos seus R$19,90.
+            </li>
+            <li>
+              <strong>E mais:</strong> além do estorno, você pode solicitar
+              <strong>R$100 direto no seu Pix</strong> — porque eu sei que você
+              vai conseguir.
+            </li>
+          </ul>
+          <p class="guarantee__payoff">
+            Ou seja: na pior das hipóteses, você sai no lucro.
+          </p>
+          <div class="payment-badges">
+            <span class="payment-badge">&#128179; Pix aprovado na hora</span>
+            <span class="payment-badge">&#128179; Cartão de crédito</span>
+            <span class="payment-badge">&#128274; Compra 100% segura</span>
+            <span class="payment-badge">&#128260; Suporte VIP</span>
+          </div>
+          <button class="cta cta--centered cta--mt" data-js="cta">
+            Quero garantir meu acesso — R$19,90
+            <span class="cta__micro"
+              >Garantia de primeira venda em 24h ou R$100 no seu Pix</span
+            >
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTHORITY -->
+    <section class="section reveal">
+      <div class="wrap">
+        <div class="authority__card">
+          <div class="authority__avatar">CM</div>
+          <div>
+            <h3 class="authority__name">
+              Caio Martins já faturou mais de R$15 milhões
+            </h3>
+            <p class="authority__text">
+              Ele é CEO e fundador da Cakto, uma das maiores plataformas de
+              pagamentos do Brasil. Ou seja: o Caio não é só alguém que ensina —
+              ele vive o mercado digital por dentro, todos os dias.
+            </p>
+            <p class="authority__text">
+              É exatamente esse conhecimento que ele colocou dentro do Método
+              P24, pra você não precisar descobrir nada sozinho.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--dark reveal">
+      <div class="wrap">
+        <div class="faq">
+          <h2 class="section__title faq__title">Perguntas frequentes</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <div
+                class="faq-item__question"
+                data-js="faq-toggle"
+                role="button"
+                tabindex="0"
+              >
+                <span>Preciso ter experiência no mercado digital?</span>
+                <span class="faq-item__arrow">&#9660;</span>
+              </div>
+              <div class="faq-item__answer">
+                Não. O Método P24 foi feito para iniciantes absolutos. Os PLRs
+                já vêm prontos — você só precisa copiar e divulgar. O passo a
+                passo completo está incluído.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div
+                class="faq-item__question"
+                data-js="faq-toggle"
+                role="button"
+                tabindex="0"
+              >
+                <span>Quanto tempo leva para começar?</span>
+                <span class="faq-item__arrow">&#9660;</span>
+              </div>
+              <div class="faq-item__answer">
+                Você pode estar vendendo em menos de 30 minutos. O acesso é
+                imediato após a confirmação do pagamento.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div
+                class="faq-item__question"
+                data-js="faq-toggle"
+                role="button"
+                tabindex="0"
+              >
+                <span>Como funciona a garantia de R$100?</span>
+                <span class="faq-item__arrow">&#9660;</span>
+              </div>
+              <div class="faq-item__answer">
+                Se você aplicar o método e não fizer sua primeira venda em até
+                24h, devolvemos 100% do seu dinheiro + R$100 de multa no seu
+                Pix. É o nosso jeito de mostrar que o método funciona.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div
+                class="faq-item__question"
+                data-js="faq-toggle"
+                role="button"
+                tabindex="0"
+              >
+                <span>Como recebo os produtos?</span>
+                <span class="faq-item__arrow">&#9660;</span>
+              </div>
+              <div class="faq-item__answer">
+                Imediatamente após a confirmação do pagamento, você recebe um
+                link com acesso a todos os +100 PLRs e o passo a passo completo.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div
+                class="faq-item__question"
+                data-js="faq-toggle"
+                role="button"
+                tabindex="0"
+              >
+                <span>Posso revender os PLRs?</span>
+                <span class="faq-item__arrow">&#9660;</span>
+              </div>
+              <div class="faq-item__answer">
+                Sim! Você recebe licença de revenda para todos os produtos. Pode
+                vender e ficar com 100% do lucro.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div
+                class="faq-item__question"
+                data-js="faq-toggle"
+                role="button"
+                tabindex="0"
+              >
+                <span>Quais formas de pagamento?</span>
+                <span class="faq-item__arrow">&#9660;</span>
+              </div>
+              <div class="faq-item__answer">
+                Pix (aprovado na hora) e cartão de crédito (parcelado em até
+                12x). Compra 100% segura.
+              </div>
+            </div>
+          </div>
+
+          <button class="cta cta--centered cta--mt" data-js="cta">
+            Quero começar agora — R$19,90
+            <span class="cta__micro"
+              >Acesso vitalício + garantia de primeira venda em 24h</span
+            >
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <a href="#">Políticas de Privacidade</a> |
+        <a href="#">Termos de Uso</a> | <a href="#">Suporte</a>
+        <p class="site-footer__copy">
+          &copy; 2025 Método P24 — Todos os direitos reservados
+        </p>
+      </div>
+    </footer>
+
+    <!-- STICKY CTA -->
+    <div class="sticky-cta" data-js="sticky-cta">
+      <div class="sticky-cta__inner">
+        <div class="sticky-cta__info">
+          <div class="sticky-cta__price">R$19,90</div>
+          <div class="sticky-cta__timer">
+            &#9200; Oferta encerra em
+            <span data-js="timer-sticky">03:00:00</span>
+          </div>
+        </div>
+        <button class="sticky-cta__btn" data-js="cta">
+          Quero começar agora
+        </button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* --------------------------------------------------
+     UTILITY: format remaining ms -> { h, m, s }
+     -------------------------------------------------- */
+        function formatRemaining(ms) {
+          const total = Math.max(0, Math.floor(ms / 1000));
+          return {
+            h: String(Math.floor(total / 3600)).padStart(2, "0"),
+            m: String(Math.floor((total % 3600) / 60)).padStart(2, "0"),
+            s: String(total % 60).padStart(2, "0"),
+          };
+        }
+
+        /* --------------------------------------------------
+     1. COUNTDOWN TIMER — 3h cycle, auto-resets
+     -------------------------------------------------- */
+        const CYCLE_MS = 3 * 60 * 60 * 1000;
+
+        (function initTimer() {
+          function getNextReset() {
+            return Math.ceil(Date.now() / CYCLE_MS) * CYCLE_MS;
+          }
+          function tick() {
+            const { h, m, s } = formatRemaining(getNextReset() - Date.now());
+
+            const hoursEl = document.querySelector('[data-js="timer-hours"]');
+            const minsEl = document.querySelector('[data-js="timer-minutes"]');
+            const secsEl = document.querySelector('[data-js="timer-seconds"]');
+            if (hoursEl) hoursEl.textContent = h;
+            if (minsEl) minsEl.textContent = m;
+            if (secsEl) secsEl.textContent = s;
+
+            const sticky = document.querySelector('[data-js="timer-sticky"]');
+            if (sticky) sticky.textContent = h + ":" + m + ":" + s;
+
+            const urgency = document.querySelector('[data-js="timer-urgency"]');
+            if (urgency)
+              urgency.textContent = "(" + h + "h " + m + "m " + s + "s)";
+          }
+          tick();
+          setInterval(tick, 1000);
+        })();
+
+        /* --------------------------------------------------
+     2. SCROLL REVEAL
+     -------------------------------------------------- */
+        (function initReveal() {
+          const els = document.querySelectorAll(".reveal");
+          if (!els.length) return;
+          const obs = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-visible");
+                  obs.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+          );
+          els.forEach((el) => obs.observe(el));
+        })();
+
+        /* --------------------------------------------------
+     3. STICKY CTA — show/hide on hero CTA scroll
+     -------------------------------------------------- */
+        (function initSticky() {
+          const stickyEl = document.querySelector('[data-js="sticky-cta"]');
+          const heroCta = document.querySelector('[data-js="cta"]');
+          if (!stickyEl || !heroCta) return;
+          const obs = new IntersectionObserver(
+            ([entry]) =>
+              stickyEl.classList.toggle("is-visible", !entry.isIntersecting),
+            { threshold: 0, rootMargin: "-80px 0px 0px 0px" },
+          );
+          obs.observe(heroCta);
+        })();
+
+        /* --------------------------------------------------
+     4. FAQ ACCORDION
+     -------------------------------------------------- */
+        (function initFaq() {
+          document.querySelectorAll('[data-js="faq-toggle"]').forEach((q) => {
+            q.addEventListener("click", function () {
+              const item = this.closest(".faq-item");
+              const wasOpen = item.classList.contains("is-open");
+              document
+                .querySelectorAll(".faq-item.is-open")
+                .forEach((i) => i.classList.remove("is-open"));
+              if (!wasOpen) item.classList.add("is-open");
+            });
+          });
+        })();
+
+        /* --------------------------------------------------
+     5. CTA CLICK HANDLER (single source)
+     -------------------------------------------------- */
+        (function initCta() {
+          const CHECKOUT_URL = "https://pay.cakto.com.br/o4mw93r_998566";
+          document.querySelectorAll('[data-js="cta"]').forEach((btn) => {
+            btn.addEventListener("click", () => {
+              window.location.href = CHECKOUT_URL;
+            });
+          });
+        })();
+
+        /* --------------------------------------------------
+     6. ANIMATED COUNTER
+     -------------------------------------------------- */
+        (function initCounter() {
+          const el = document.querySelector('[data-js="counter"]');
+          if (!el) return;
+          const target = parseInt(el.getAttribute("data-target"), 10);
+          if (isNaN(target)) return;
+          const duration = 2000;
+
+          const obs = new IntersectionObserver(
+            ([entry]) => {
+              if (!entry.isIntersecting) return;
+              const start = performance.now();
+              function animate(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.floor(eased * target).toLocaleString(
+                  "pt-BR",
+                );
+                if (t < 1) requestAnimationFrame(animate);
+              }
+              requestAnimationFrame(animate);
+              obs.unobserve(el);
+            },
+            { threshold: 0.5 },
+          );
+          obs.observe(el);
+        })();
+      })();
+    </script>
+  </body>
+</html>
