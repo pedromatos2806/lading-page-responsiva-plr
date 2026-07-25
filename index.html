@@ -169,13 +169,26 @@
           transform 0.2s ease,
           box-shadow 0.2s ease;
         position: relative;
+        animation: cta-pulse 1.6s ease-in-out infinite;
+      }
+      @keyframes cta-pulse {
+        0%,
+        100% {
+          transform: scale(1) translateZ(0);
+          box-shadow: 0 8px 32px rgba(45, 125, 247, 0.35);
+        }
+        50% {
+          transform: scale(1.045) translateZ(0);
+          box-shadow: 0 12px 40px rgba(45, 125, 247, 0.55);
+        }
       }
       .cta:hover {
-        transform: translateY(-2px);
+        animation-play-state: paused;
+        transform: translateY(-2px) scale(1.045);
         box-shadow: 0 8px 32px rgba(45, 125, 247, 0.35);
       }
       .cta:active {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
       .cta--centered {
         max-width: 440px;
