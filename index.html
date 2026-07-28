@@ -541,6 +541,57 @@
         gap: 6px;
       }
 
+      /* --- 4.6b Carousel --- */
+      .carousel {
+        max-width: 1200px;
+        margin: 0 auto 40px;
+      }
+      .carousel__track {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .carousel__img {
+        flex: 0 0 100%;
+        scroll-snap-align: center;
+        border-radius: var(--radius);
+      }
+      @media (min-width: 640px) {
+        .carousel__track {
+          overflow-x: visible;
+          scroll-snap-type: none;
+        }
+        .carousel__img {
+          flex: 1 1 0;
+          min-width: 0;
+        }
+        .carousel__dots {
+          display: none;
+        }
+      }
+      .carousel__dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .carousel__dot {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        background: var(--muted);
+        cursor: pointer;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .carousel__dot.is-active {
+        background: var(--blue);
+        transform: scale(1.3);
+      }
+
       /* --- 4.7 Benefits grid --- */
       .benefits-grid {
         display: grid;
@@ -1152,6 +1203,46 @@
 
     <!-- SOCIAL PROOF COUNTER -->
     <section class="proof-counter proof-counter--dark reveal">
+          <!-- CARROSSEL DE PRINTS -->
+    <div class="carousel">
+      <div class="carousel__track" data-js="carousel-track">
+        <img
+          class="carousel__img"
+          src="img/print.jpeg"
+          alt="Print de comprovante 1"
+          loading="lazy"
+        />
+        <img
+          class="carousel__img"
+          src="img/print2.jpeg"
+          alt="Print de comprovante 2"
+          loading="lazy"
+        />
+        <img
+          class="carousel__img"
+          src="img/print3.jpeg"
+          alt="Print de comprovante 3"
+          loading="lazy"
+        />
+      </div>
+      <div class="carousel__dots" data-js="carousel-dots">
+        <button
+          class="carousel__dot is-active"
+          data-js="carousel-dot"
+          aria-label="Ir para imagem 1"
+        ></button>
+        <button
+          class="carousel__dot"
+          data-js="carousel-dot"
+          aria-label="Ir para imagem 2"
+        ></button>
+        <button
+          class="carousel__dot"
+          data-js="carousel-dot"
+          aria-label="Ir para imagem 3"
+        ></button>
+      </div>
+    </div>
       <div class="wrap">
         <div class="proof-counter__number" data-js="counter" data-target="2347">
           + 2.347
@@ -1161,6 +1252,8 @@
         </p>
       </div>
     </section>
+
+
     <!-- Box de Preço-->
     <div class="price-box">
       <span class="price-box__tag">&#9200; Oferta por tempo limitado</span>
@@ -1499,6 +1592,74 @@
             { threshold: 0, rootMargin: "-80px 0px 0px 0px" },
           );
           obs.observe(heroCta);
+        })();
+
+        /* --------------------------------------------------
+     3b. CAROUSEL DOTS (mobile only)
+     -------------------------------------------------- */
+        (function initCarousel() {
+          const track = document.querySelector('[data-js="carousel-track"]');
+          const dots = document.querySelectorAll('[data-js="carousel-dot"]');
+          if (!track || !dots.length) return;
+          const imgs = track.querySelectorAll(".carousel__img");
+
+          dots.forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+              imgs[i].scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+                block: "nearest",
+              });
+            });
+          });
+
+          const obs = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                const i = Array.from(imgs).indexOf(entry.target);
+                dots.forEach((d) => d.classList.remove("is-active"));
+                dots[i].classList.add("is-active");
+              });
+            },
+            { root: track, threshold: 0.6 },
+          );
+          imgs.forEach((img) => obs.observe(img));
+
+          /* swipe past an edge wraps to the opposite end */
+          let touchStartX = 0;
+          track.addEventListener(
+            "touchstart",
+            (e) => {
+              touchStartX = e.touches[0].clientX;
+            },
+            { passive: true },
+          );
+          track.addEventListener(
+            "touchend",
+            (e) => {
+              const deltaX = e.changedTouches[0].clientX - touchStartX;
+              const threshold = 40;
+              const atStart = track.scrollLeft <= 4;
+              const atEnd =
+                track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+
+              if (deltaX > threshold && atStart) {
+                imgs[imgs.length - 1].scrollIntoView({
+                  behavior: "smooth",
+                  inline: "center",
+                  block: "nearest",
+                });
+              } else if (deltaX < -threshold && atEnd) {
+                imgs[0].scrollIntoView({
+                  behavior: "smooth",
+                  inline: "center",
+                  block: "nearest",
+                });
+              }
+            },
+            { passive: true },
+          );
         })();
 
         /* --------------------------------------------------
