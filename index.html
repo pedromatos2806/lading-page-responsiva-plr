@@ -4,6 +4,42 @@
     <meta name="facebook-domain-verification" content="5tnkmrknx0515f3fdbcg0atavwzp7p" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "629498879210531");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=629498879210531&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <title> P+100 — Vire Produtor Digital e Fature Ainda Hoje</title>
     <meta name="theme-color" content="#000000" />
     <link rel="icon" type="image/png" href="img/icone-100p.png" />
@@ -1866,8 +1902,28 @@ e vendi o primeiro hoje, dia 04/06/2026"
           const CHECKOUT_URL = "https://pay.cakto.com.br/o4mw93r_998566";
           document.querySelectorAll('[data-js="cta"]').forEach((btn) => {
             btn.addEventListener("click", () => {
+              if (window.fbq) {
+                fbq("track", "InitiateCheckout", {
+                  value: 27.9,
+                  currency: "BRL",
+                  content_name: "P+100 - Acesso Vitalício",
+                });
+              }
               window.location.href = CHECKOUT_URL;
             });
+          });
+        })();
+
+        /* --------------------------------------------------
+     8. PIXEL — ViewContent (esta página única é o "produto")
+     -------------------------------------------------- */
+        (function initViewContent() {
+          if (!window.fbq) return;
+          fbq("track", "ViewContent", {
+            content_name: "P+100 - Acesso Vitalício",
+            content_type: "product",
+            value: 27.9,
+            currency: "BRL",
           });
         })();
 
