@@ -979,6 +979,95 @@
         box-shadow: 0 4px 20px rgba(45, 125, 247, 0.3);
       }
 
+      /* --- 4.14b Sale toast --- */
+      .sale-toast {
+        position: fixed;
+        left: 16px;
+        top: 64px;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--bg-2);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius);
+        padding: 14px 18px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        max-width: none;
+        width: max-content;
+        transform: translateX(-120%);
+        transition: transform 0.4s ease;
+      }
+      .sale-toast.is-visible {
+        transform: translateX(0);
+      }
+      .sale-toast__icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--gradient);
+        color: #04101f;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 16px;
+      }
+      .sale-toast__line {
+        display: flex;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        align-items: baseline;
+        gap: 4px;
+      }
+      .sale-toast__name {
+        font-size: 14px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .sale-toast__text {
+        font-size: 12px;
+        color: var(--muted-2);
+      }
+      .sale-toast__city {
+        font-size: 11px;
+        font-style: italic;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      .sale-toast__close {
+        flex-shrink: 0;
+        margin-left: 4px;
+        width: 22px;
+        height: 22px;
+        border: none;
+        background: none;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .sale-toast__close:hover {
+        color: var(--blue-light);
+      }
+      @media (max-width: 640px) {
+        .sale-toast {
+          left: 12px;
+          top: 80px;
+          max-width: calc(100vw - 24px);
+          overflow: hidden;
+        }
+        .sale-toast__name {
+          font-size: 13px;
+        }
+        .sale-toast__text {
+          font-size: 11px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
       /* --- 4.15 Scroll reveal --- */
       .reveal {
         opacity: 0;
@@ -1040,6 +1129,8 @@
         }
         .sticky-cta__btn {
           width: 100%;
+          font-size: 13px;
+          white-space: normal;
         }
         .sticky-cta__info {
           text-align: center;
@@ -1484,7 +1575,7 @@ e vendi o primeiro hoje, dia 04/06/2026"
           </div>
 
           <button class="cta cta--centered cta--mt" data-js="cta">
-            Quero lucrar agora — R$27,90
+            Quero liberar meu acesso vitalício pro apenas R$27,90
             <span class="cta__micro"
               >Acesso vitalício + garantia de primeira venda em 24h</span
             >
@@ -1505,6 +1596,19 @@ e vendi o primeiro hoje, dia 04/06/2026"
       </div>
     </footer>
 
+    <!-- SALE TOAST -->
+    <div class="sale-toast" data-js="sale-toast">
+      <div class="sale-toast__icon">&#10003;</div>
+      <div>
+        <div class="sale-toast__line">
+          <span class="sale-toast__name" data-js="sale-toast-name"></span>
+          <span class="sale-toast__text">acabou de comprar o Método P+100</span>
+        </div>
+        <div class="sale-toast__city" data-js="sale-toast-city"></div>
+      </div>
+      <button class="sale-toast__close" data-js="sale-toast-close" aria-label="Fechar notificação" type="button">&times;</button>
+    </div>
+
     <!-- STICKY CTA -->
     <div class="sticky-cta" data-js="sticky-cta">
       <div class="sticky-cta__inner">
@@ -1519,7 +1623,7 @@ e vendi o primeiro hoje, dia 04/06/2026"
           </div>
         </div>
         <button class="sticky-cta__btn" data-js="cta">
-          Quero lucrar agora
+          Quero liberar meu acesso vitalício
         </button>
       </div>
     </div>
@@ -1761,6 +1865,73 @@ e vendi o primeiro hoje, dia 04/06/2026"
             { threshold: 0.5 },
           );
           obs.observe(el);
+        })();
+
+        /* --------------------------------------------------
+     7. SALE TOAST — random Brazilian name every 5-30s
+     -------------------------------------------------- */
+        (function initSaleToast() {
+          const toast = document.querySelector('[data-js="sale-toast"]');
+          const nameEl = document.querySelector('[data-js="sale-toast-name"]');
+          const cityEl = document.querySelector('[data-js="sale-toast-city"]');
+          const closeBtn = document.querySelector('[data-js="sale-toast-close"]');
+          if (!toast || !nameEl || !cityEl || !closeBtn) return;
+
+          let hideTimer = null;
+          closeBtn.addEventListener("click", () => {
+            clearTimeout(hideTimer);
+            toast.classList.remove("is-visible");
+          });
+
+          const firstNames = [
+            "Ana", "Bruno", "Carla", "Diego", "Fernanda", "Gabriel", "Isabela",
+            "João", "Larissa", "Marcos", "Natália", "Paulo", "Rafaela", "Thiago",
+            "Vanessa", "Wesley", "Camila", "Eduardo", "Juliana", "Lucas",
+            "Mariana", "Rodrigo", "Patrícia", "Felipe", "Aline", "André",
+          ];
+          const lastNames = [
+            "Silva", "Souza", "Oliveira", "Santos", "Pereira", "Costa", "Almeida",
+            "Ribeiro", "Carvalho", "Gomes", "Martins", "Rocha", "Barbosa", "Araújo",
+          ];
+          const cities = [
+            "São Paulo, SP", "Rio de Janeiro, RJ", "Belo Horizonte, MG",
+            "Curitiba, PR", "Porto Alegre, RS", "Salvador, BA", "Recife, PE",
+            "Fortaleza, CE", "Brasília, DF", "Goiânia, GO", "Manaus, AM",
+            "Florianópolis, SC", "Vitória, ES", "Natal, RN", "Campinas, SP",
+            "Belém, PA", "João Pessoa, PB", "Maceió, AL", "Cuiabá, MT",
+            "Uberlândia, MG",
+          ];
+
+          let lastKey = "";
+          function randomPick() {
+            let name, city, key;
+            do {
+              const f = firstNames[Math.floor(Math.random() * firstNames.length)];
+              const l = lastNames[Math.floor(Math.random() * lastNames.length)];
+              name = f + " " + l.charAt(0) + ".";
+              city = cities[Math.floor(Math.random() * cities.length)];
+              key = name + city;
+            } while (key === lastKey);
+            lastKey = key;
+            return { name, city };
+          }
+
+          function showToast() {
+            const { name, city } = randomPick();
+            nameEl.textContent = name;
+            cityEl.textContent = city;
+            toast.classList.add("is-visible");
+            hideTimer = setTimeout(() => toast.classList.remove("is-visible"), 5000);
+          }
+
+          function scheduleNext() {
+            const delay = 5000 + Math.random() * 25000; // 5-30s
+            setTimeout(() => {
+              showToast();
+              scheduleNext();
+            }, delay);
+          }
+          scheduleNext();
         })();
       })();
     </script>
