@@ -956,27 +956,59 @@
         text-decoration-color: #ff3b3b;
       }
       .sticky-cta__timer {
-        font-size: 12px;
-        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+        color: #ff5252;
+        animation: sticky-timer-blink 1.2s ease-in-out infinite;
+      }
+      .sticky-cta__timer span {
+        font-size: 15px;
+        font-weight: 800;
+      }
+      @keyframes sticky-timer-blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.55;
+        }
       }
       .sticky-cta__btn {
         flex-shrink: 0;
-        padding: 14px 24px;
+        padding: 14px 26px;
         border: none;
+        border-bottom: 3px solid #05306e;
         border-radius: 10px;
-        background: var(--gradient);
-        color: #04101f;
+        background: linear-gradient(135deg, #4a9bff 0%, #0a58d1 60%, #073e94 100%);
+        color: #fff;
         font-weight: 800;
         font-size: 15px;
+        letter-spacing: 0.3px;
         cursor: pointer;
         white-space: nowrap;
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
+        box-shadow: 0 6px 18px rgba(10, 88, 209, 0.45);
+        animation: sticky-btn-pulse 1.6s ease-in-out infinite;
+      }
+      @keyframes sticky-btn-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 6px 18px rgba(10, 88, 209, 0.45);
+        }
+        50% {
+          transform: scale(1.08);
+          box-shadow: 0 10px 28px rgba(10, 88, 209, 0.65);
+        }
       }
       .sticky-cta__btn:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 20px rgba(45, 125, 247, 0.3);
+        animation-play-state: paused;
+        transform: translateY(-1px) scale(1.08);
+        box-shadow: 0 10px 28px rgba(10, 88, 209, 0.65);
+      }
+      .sticky-cta__btn:active {
+        transform: translateY(1px) scale(0.97);
+        box-shadow: 0 3px 10px rgba(10, 88, 209, 0.4);
       }
 
       /* --- 4.14b Sale toast --- */
@@ -1613,13 +1645,13 @@ e vendi o primeiro hoje, dia 04/06/2026"
     <div class="sticky-cta" data-js="sticky-cta">
       <div class="sticky-cta__inner">
         <div class="sticky-cta__info">
-          <div class="sticky-cta__price">
-            <span class="sticky-cta__price-old">R$97,00</span>
-            R$27,90
-          </div>
           <div class="sticky-cta__timer">
             &#9200; Oferta encerra em
             <span data-js="timer-sticky">00:10</span>
+          </div>
+          <div class="sticky-cta__price">
+            <span class="sticky-cta__price-old">R$97,00</span>
+            R$27,90
           </div>
         </div>
         <button class="sticky-cta__btn" data-js="cta">
